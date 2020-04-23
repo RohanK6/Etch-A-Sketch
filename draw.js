@@ -1,5 +1,5 @@
 // Create variables for all the elements
-const drawBtn = document.getElementById('draw-btn');
+const buttons = document.querySelectorAll('button');
 const blackBtn = document.getElementById('black-btn')
 const colorBtn = document.getElementById('color-btn');
 const graphiteBtn = document.getElementById('graphite-btn');
@@ -9,59 +9,98 @@ const gridSizeBtn = document.getElementById('change-grid-btn');
 const gridContainer = document.querySelector('.gridContainer');
 
 // Initialize settings
-let draw = false;
 let black = false;
 let color = false;
 let graphite = false;
 let erase = false;
 let clear = false;
-let gridSize = 10;
+let gridSize = 16;
 
 // Change settings when buttons are clicked
-drawBtn.addEventListener('click', function() {
-    draw = true;
-    black = true;
-    color = false;
-    graphite = false;
-    erase = false;
-    console.log('draw');
-});
 blackBtn.addEventListener('click', function() {
     black = true;
     color = false;
     graphite = false;
-    console.log('black');
+    erase = false;
+    clear = false;
+    buttons.forEach((button) => {
+        if (button == blackBtn) {
+            button.style.background = 'green';
+        }
+        else {
+            button.style.background = 'gray';
+        }
+    });
+    console.log('black: ' + black);
     
 });
 colorBtn.addEventListener('click', function() {
     black = false;
     color = true;
     graphite = false;
-    console.log('color');
+    erase = false;
+    clear = false;
+    buttons.forEach((button) => {
+        if (button == colorBtn) {
+            button.style.background = 'green';
+        }
+        else {
+            button.style.background = 'gray';
+        }
+    });
+    console.log('color: ' + color);
 });
 graphiteBtn.addEventListener('click', function() {
     black = false;
     color = false;
     graphite = true;
-    console.log('graphite')
+    erase = false;
+    clear = false;
+    buttons.forEach((button) => {
+        if (button == graphiteBtn) {
+            button.style.background = 'green';
+        }
+        else {
+            button.style.background = 'gray';
+        }
+    });
+    console.log('graphite: ' + graphite)
 });
 eraseBtn.addEventListener('click', function() {
-    draw = false;
+    black = false;
+    color = false;
+    graphite = false;
     erase = true;
-    console.log('erase');
+    clear = false;
+    buttons.forEach((button) => {
+        if (button == eraseBtn) {
+            button.style.background = 'green';
+        }
+        else {
+            button.style.background = 'gray';
+        }
+    });
+    console.log('erase: ' + erase);
 })
 clearBtn.addEventListener('click', function() {
     clear = true;
-    console.log('clear');
+    buttons.forEach((button) => {
+        if (button == clearBtn) {
+            button.style.background = 'green';
+        }
+        else {
+            button.style.background = 'gray';
+        }
+    });
+    console.log('clear: ' + clear);
 });
 gridSizeBtn.addEventListener('click', function() {
-    console.log('grid');
-    gridSize = prompt("Enter")
+    let newGridSize = prompt("Enter")
 });
 
 // Draws the Etch-A-Sketch grid
 function drawGrid(gridSize) {
-    const gridArea = gridSize * gridSize;
+    let gridArea = gridSize * gridSize;
     for (let i = 0; i < gridArea; i++) {
         const box = document.createElement('div');
         box.classList.add('box');
