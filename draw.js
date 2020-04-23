@@ -31,8 +31,6 @@ blackBtn.addEventListener('click', function() {
             button.style.background = 'gray';
         }
     });
-    console.log('black: ' + black);
-    
 });
 rainbowBtn.addEventListener('click', function() {
     black = false;
@@ -48,7 +46,6 @@ rainbowBtn.addEventListener('click', function() {
             button.style.background = 'gray';
         }
     });
-    console.log('rainbow: ' + rainbow);
 });
 graphiteBtn.addEventListener('click', function() {
     black = false;
@@ -64,7 +61,6 @@ graphiteBtn.addEventListener('click', function() {
             button.style.background = 'gray';
         }
     });
-    console.log('graphite: ' + graphite)
 });
 eraseBtn.addEventListener('click', function() {
     black = false;
@@ -80,19 +76,10 @@ eraseBtn.addEventListener('click', function() {
             button.style.background = 'gray';
         }
     });
-    console.log('erase: ' + erase);
 })
 clearBtn.addEventListener('click', function() {
     clear = true;
-    buttons.forEach((button) => {
-        if (button == clearBtn) {
-            button.style.background = 'green';
-        }
-        else {
-            button.style.background = 'gray';
-        }
-    });
-    console.log('clear: ' + clear);
+    clearSketch()
 });
 gridSizeBtn.addEventListener('click', function() {
     let newGridSize = prompt("Enter")
@@ -122,7 +109,12 @@ function sketch(box) {
     if (graphite) {
         graphiteSketch(box);
     }
-     
+    if (erase) {
+        eraseSketch(box);
+    }
+    if (clear) {
+        clearSketch();
+    }
 }
 
 // Color = black
@@ -152,9 +144,17 @@ function graphiteSketch(box) {
     box.style.background = grayColor;
 }
 // Erase
+function eraseSketch(box) {
+    box.style.background = 'white';
+}
 
 // Clear
-
-
+function clearSketch() {
+    let boxes = document.getElementsByClassName('box');
+    for (let i = 0; i < boxes.length; i++) {
+        boxes[i].style.background = 'white';
+    }
+    clear = false;
+}
 
 drawGrid(gridSize)
