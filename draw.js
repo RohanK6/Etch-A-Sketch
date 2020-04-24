@@ -82,7 +82,8 @@ clearBtn.addEventListener('click', function() {
     clearSketch()
 });
 gridSizeBtn.addEventListener('click', function() {
-    let newGridSize = prompt("Enter")
+    let newGridSize = parseInt(prompt('Enter a new length for the grid (e.g. 12)'));
+    drawResizedGrid(newGridSize)
 });
 
 // Draws the Etch-A-Sketch grid
@@ -91,11 +92,21 @@ function drawGrid(gridSize) {
     for (let i = 0; i < gridArea; i++) {
         const box = document.createElement('div');
         box.classList.add('box');
+        box.attributes.width = 600/gridSize;
+        box.attributes.length = 600/gridSize;
         gridContainer.appendChild(box);
         box.addEventListener('mouseover', function() {
             sketch(box);
         });
     }
+    gridContainer.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
+    gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
+}
+
+// Draws a grid if the user wishes to change the grid size
+function drawResizedGrid(newGridSize) {
+    gridContainer.innerHTML = '';
+    drawGrid(newGridSize)
 }
 
 // Runs the if statements to determine what color to fill the box (or what action to perform) and calls the appropriate function
@@ -143,6 +154,7 @@ function graphiteSketch(box) {
     }  
     box.style.background = grayColor;
 }
+
 // Erase
 function eraseSketch(box) {
     box.style.background = 'white';
