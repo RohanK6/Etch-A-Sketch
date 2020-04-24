@@ -28,7 +28,7 @@ blackBtn.addEventListener('click', function() {
             button.style.background = 'green';
         }
         else {
-            button.style.background = 'gray';
+            button.style.background = '#eba834';
         }
     });
 });
@@ -43,7 +43,7 @@ rainbowBtn.addEventListener('click', function() {
             button.style.background = 'green';
         }
         else {
-            button.style.background = 'gray';
+            button.style.background = '#eba834';
         }
     });
 });
@@ -58,7 +58,7 @@ graphiteBtn.addEventListener('click', function() {
             button.style.background = 'green';
         }
         else {
-            button.style.background = 'gray';
+            button.style.background = '#eba834';
         }
     });
 });
@@ -73,7 +73,7 @@ eraseBtn.addEventListener('click', function() {
             button.style.background = 'green';
         }
         else {
-            button.style.background = 'gray';
+            button.style.background = '#eba834';
         }
     });
 })

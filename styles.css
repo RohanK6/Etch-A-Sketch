@@ -1,11 +1,43 @@
+.title {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .gridContainer {
+    /* Grid-Related */
     display: inline-grid;
     grid-template-columns: repeat(16, 2fr);
     grid-template-rows: repeat(16, 2fr);
     border: 5px solid black;
     border-radius: 5px;
-    height: 575px;
-    width: 575px;
+    height: 600px;
+    width: 600px;
+
+    /* Centering div */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.selectors {
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.selectors button {
+    font-size: 20px;
+    padding: 10px 14px;
+    background-color: #eba834;
+    border-radius: 50%;
+}
+
+.selectors button:hover {
+    padding: 14px 16px;
 }
 
 .box {
